@@ -6,11 +6,12 @@ def main():
     r = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
 
-    links = map(lambda x: x.string, soup.find_all('a'))
+    links = map(lambda a: a.string, soup.find_all('a'))
+    lectures = filter(lambda s: str(s).startswith('Lecture'), links)
 
-    for s in links:
-        if str(s).startswith('Lecture'):
-            print(s)
+    for lecture in lectures:
+        print(lecture)
+
 
 if __name__ == '__main__':
     main()
