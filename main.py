@@ -1,9 +1,11 @@
 import requests
+from bs4 import BeautifulSoup
 
 def main():
     url = 'https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-034-artificial-intelligence-fall-2010/lecture-videos/'
     r = requests.get(url)
-    print(r.text)
+    soup = BeautifulSoup(r.text, 'html.parser')
+    print(soup.prettify())
 
 if __name__ == '__main__':
     main()
