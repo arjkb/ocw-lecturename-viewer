@@ -6,6 +6,8 @@ def main():
     r = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
     print(soup.prettify())
+    for link in soup.find_all('a'):
+        print(link)
 
 if __name__ == '__main__':
     main()
